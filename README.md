@@ -9,7 +9,7 @@ O objetivo principal é criar um fluxo robusto e modular que transforma dados br
 ---
 
 ## Explicação em Vídeo
-Acesse o vídeo com a explicação geral do projeto [Vídeo Explicação](link da explicação)
+Acesse o vídeo com a explicação geral do projeto ([Vídeo Explicação](https://youtu.be/qFmbjXlOhGw))
 
 ---
 
