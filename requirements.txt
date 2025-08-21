@@ -1,0 +1,12 @@
+jupyterlab
+pandas
+matplotlib
+requests
+pyyaml
+langgraph
+langchain-community 
+langchain-openai
+openai
+reportlab
+beautifulsoup4
+ruff

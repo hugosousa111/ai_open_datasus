@@ -1,0 +1,70 @@
+# data_downloader
+downloader_config:
+  base_url: "https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SRAG/{year}/{filename}"
+  days_to_try: 10
+file_output:
+  destination_folder: "data/04_raw_auto"
+  destination_filename: "last_file.csv"
+
+# data_processor
+preprocessing:
+  output_folder: 'data/05_final_auto'
+  output_filename: 'srag_data.csv'
+  columns_to_keep:
+    - "DT_NOTIFIC"
+    - "UTI"
+    - "EVOLUCAO"
+    - "VACINA"
+    - "VACINA_COV"
+
+# metrics_calculator
+metrics_calculator:
+  output_dir: 'data/06_metrics'
+
+# vizualizations
+visualizations_tool:
+  input_filepath: 'data/05_final_auto/srag_data.csv'
+  output_dir: 'data/07_visualizations'
+
+# news_collector
+news_config:
+  search_terms:
+    - 'srag'
+    - 'srag brasil'
+    - 'síndrome respiratória aguda grave'
+    - 'síndrome respiratória'
+    - 'surto respiratório brasil'
+    - 'influenza brasil'
+    - 'gripe brasil'
+    - 'covid-19 brasil'
+    - 'covid brasil'
+  search_parameters:
+    type: "news"
+    time_period: "qdr:m"
+    country_code: "br"
+    language_code: "pt"
+    num_results: 10
+  output_dir: 'data/08_news'
+  output_filename: 'news.json'
+
+# report_generator
+report_generator_config:
+  prompt_file: "conf/prompt.md"
+  output_dir: "data/09_report"
+  output_filename: "report.md"
+  model: "gpt-3.5-turbo"
+  temperature: 0.7
+  max_tokens: 1500
+  system_prompt: >
+    Você é um Analista de Dados de Saúde. Seu objetivo é atuar como um agente
+    inteligente e gerar um relatório analítico e coeso sobre o cenário da
+    Síndrome Respiratória Aguda Grave (SRAG). Sua tarefa principal é correlacionar
+    dados quantitativos (métricas e gráficos) com informações qualitativas
+    (notícias) para fornecer um panorama completo e contextualizado, baseado
+    estritamente nas fontes de dados fornecidas.
+
+# final_report_generator
+final_report_config:
+  paths:
+    template_html: "conf/relatorio.html"
+    output_html: "data/10_final_report/relatorio.html"

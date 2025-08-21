@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório SRAG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+        h3 {
+            color: #004a99;
+            margin-top: 25px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .info-header {
+            text-align: center;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #555;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .metric-card {
+            background-color: #eef7ff;
+            border-left: 5px solid #0056b3;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .metric-card strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #004a99;
+        }
+        .periods-list {
+            list-style-type: '→';
+            padding-left: 20px;
+        }
+        .periods-list li {
+            padding-left: 10px;
+            margin-bottom: 8px;
+        }
+        .graph-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .graph-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .markdown-content {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Relatório SRAG</h1>
+            <p class="info-header">
+                Dataset baixado pela última vez em: <strong>[raw_auto_metadata.update_date]</strong><br>
+                O arquivo baixado é referente ao dia: <strong>[raw_auto_metadata.date_last_file]</strong>
+            </p>
+        </header>
+
+        <section id="metrics">
+            <h2>Métricas Analisadas</h2>
+            
+            <h3>Taxa de Aumento de Casos</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <strong>Últ. 7 dias vs. Ant.:</strong>
+                    <span>[increase_rate.last_7_days_vs_previous] %</span>
+                </div>
+                <div class="metric-card">
+                    <strong>Últ. 30 dias vs. Ant:</strong>
+                    <span>[increase_rate.last_30_days_vs_previous] %</span>
+                </div>
+                <div class="metric-card">
+                    <strong>Mês Atual vs. Anterior:</strong>
+                    <span>[increase_rate.current_month_vs_previous] %</span>
+                </div>
+            </div>
+
+            <h3>Taxa de Mortalidade</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <strong>Nos últimos 7 dias:</strong>
+                    <span>[mortality_rate.last_7_days] %</span>
+                </div>
+                <div class="metric-card">
+                    <strong>Nos últimos 30 dias:</strong>
+                    <span>[mortality_rate.last_30_days] %</span>
+                </div>
+                <div class="metric-card">
+                    <strong>No Mês Atual:</strong>
+                    <span>[mortality_rate.current_month] %</span>
+                </div>
+            </div>
+
+            <h3>Taxa de Ocupação de UTI</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <strong>Nos últimos 7 dias:</strong>
+                    <span>[uti_occupancy_rate.last_7_days] %</span>
+                </div>
+                <div class="metric-card">
+                    <strong>Nos últimos 30 dias:</strong>
+                    <span>[uti_occupancy_rate.last_30_days] %</span>
+                </div>
+                <div class="metric-card">
+                    <strong>No Mês Atual:</strong>
+                    <span>[uti_occupancy_rate.current_month] %</span>
+                </div>
+            </div>
+
+            <h3>Taxa de Vacinação (Gripe)</h3>
+            <div class="metrics-grid">
+                 <div class="metric-card">
+                    <strong>Nos últimos 7 dias:</strong>
+                    <span>[vaccination_rate_flu.last_7_days] %</span>
+                </div>
+                <div class="metric-card">
+                    <strong>Nos últimos 30 dias:</strong>
+                    <span>[vaccination_rate_flu.last_30_days] %</span>
+                </div>
+                <div class="metric-card">
+                    <strong>No Mês Atual:</strong>
+                    <span>[vaccination_rate_flu.current_month] %</span>
+                </div>
+            </div>
+
+            <h3>Taxa de Vacinação (COVID-19)</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <strong>Nos últimos 7 dias:</strong>
+                    <span>[vaccination_rate_covid.last_7_days] %</span>
+                </div>
+                <div class="metric-card">
+                    <strong>Nos últimos 30 dias:</strong>
+                    <span>[vaccination_rate_covid.last_30_days] %</span>
+                </div>
+                <div class="metric-card">
+                    <strong>No Mês Atual:</strong>
+                    <span>[vaccination_rate_covid.current_month] %</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="periods">
+            <h2>Períodos Analisados</h2>
+            <ul class="periods-list">
+                <li><strong>Mês Atual:</strong> de [current_month.start] até [current_month.end]</li>
+                <li><strong>Mês Anterior:</strong> de [last_month.start] até [last_month.end]</li>
+                <li><strong>Últimos 7 Dias:</strong> de [last_7_days.start] até [last_7_days.end]</li>
+                <li><strong>7 Dias Anteriores:</strong> de [previous_7_days.start] até [previous_7_days.end]</li>
+                <li><strong>Últimos 30 Dias:</strong> de [last_30_days.start] até [last_30_days.end]</li>
+                <li><strong>30 Dias Anteriores:</strong> de [previous_30_days.start] até [previous_30_days.end]</li>
+            </ul>
+        </section>
+
+        <section id="graphs">
+            <h2>Gráficos de Tendência</h2>
+            <div class="graph-container">
+                <h3>Evolução nos Últimos 12 Meses</h3>
+                <img src="../../[path.last_12_months.png]" alt="Gráfico dos últimos 12 meses">
+            </div>
+            <div class="graph-container">
+                <h3>Evolução nos Últimos 30 Dias</h3>
+                <img src="../../[path.last_30_days.png]" alt="Gráfico dos últimos 30 dias">
+            </div>
+        </section>
+
+        <section id="report-text">
+            <h2>Análise e Observações</h2>
+            <div class="markdown-content"  id="meu-conteudo-markdown">
+[path.report.md]
+            </div>
+        </section>
+
+        <footer>
+            <p>Relatório gerado em: <span id="generation-date">[Data e Hora da Construção do Relatório]</span></p>
+        </footer>
+
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const now = new Date();
+            const formattedDate = now.toLocaleString('pt-BR', {
+                dateStyle: 'full',
+                timeStyle: 'medium'
+            });
+            const dateElement = document.getElementById('generation-date');
+            if (dateElement.innerHTML.includes('[')) { 
+                 dateElement.textContent = formattedDate;
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        const markdownContainer = document.getElementById('meu-conteudo-markdown');
+        const markdownText = markdownContainer.innerHTML;
+        const htmlText = marked.parse(markdownText);
+        markdownContainer.innerHTML = htmlText;
+    </script>
+</body>
+</html>

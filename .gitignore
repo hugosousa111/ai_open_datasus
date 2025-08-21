@@ -1,0 +1,86 @@
+# Byte-compiled/optimized/DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Python virtualenv
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+profile_default/
+nbextensions/
+
+# Arquivos de configuração de IDEs e editores
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos de Sistema Operacional
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Arquivos de Teste e Cobertura
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# Arquivos de Logs e Bancos de Dados
+*.log
+*.db
+*.sqlite3
+
+# Arquivos de ambiente (credenciais) - NUNCA adicione ao Git!
+.env
+.env.*
+!.env.example
+
+# Outros
+*.ipynb.bak
+*.swo
+*.swp
+
+# Ignorar todo o conteúdo da pasta 'data'
+data/*
+!data/**/.gitkeep
+
+# Ignorar todo o conteúdo da pasta 'logs'
+logs/*
+!logs/.gitkeep
