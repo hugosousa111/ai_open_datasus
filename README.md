@@ -35,8 +35,8 @@ Siga os passos abaixo para configurar e executar o projeto em seu ambiente local
 ### 1. Clonar o Repositório
 
 ```bash
-git clone <URL_DO_SEU_REPOSITORIO>
-cd <NOME_DA_PASTA_DO_PROJETO>
+git clone https://github.com/hugosousa111/ai_open_datasus.git
+cd ai_open_datasus
 ```
 
 ### 2. Configurar o Ambiente Virtual
